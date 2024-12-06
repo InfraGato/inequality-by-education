@@ -6,7 +6,7 @@ from linearmodels.iv.results import IVResults
 from src import Paths
 from statsmodels.api import add_constant
 from toolz import pipe
-from typing import Union, List
+from typing import Union, List, Tuple
 import numpy as np
 import os
 import pandas as pd
@@ -32,7 +32,7 @@ class Grid:
 @dataclass
 class Results:
     dependent: List[str]
-    exog: List[List[str]]
+    exog: List[Tuple[str]]
     iv: List[IVResults]
 
     def add_iv(self, dependent: str, exog: List[str], iv: IVResults):
@@ -110,7 +110,7 @@ grid = Grid(
         lambda x: chain(*x),
         lambda x: list(x),
         lambda x: [["const"] + list(i) for i in x],
-        lambda x: ["const"] + x,
+        lambda x: [["const"]] + x,
     ),
 )
 # %%
@@ -120,7 +120,7 @@ for y, w in product(grid.dependent, grid.exog):
     try:
         results.add_iv(
             dependent=y,
-            exog=w,
+            exog=tuple(w),
             iv=IV2SLS(
                 dependent=data.dependent[y],
                 exog=data.exog[w],
@@ -145,3 +145,4 @@ results.mutate(
 
 with open(paths.join(paths.data, "results.pkl"), "wb") as f:
     pkl.dump(results, f)
+# %%
