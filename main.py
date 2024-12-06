@@ -20,6 +20,7 @@ class Data:
     exog: Union[pd.Series, pd.DataFrame, np.ndarray]
     endog: Union[pd.Series, pd.DataFrame, np.ndarray]
     instrument: Union[pd.Series, pd.DataFrame, np.ndarray]
+    weights: Union[pd.Series, pd.DataFrame, np.ndarray]
     cluster: Union[pd.Series, pd.DataFrame, np.ndarray]
 
 
@@ -88,6 +89,11 @@ def load_data() -> Data:
             lambda x: x["z"],
             lambda x: pd.DataFrame(x),
         ),
+        weights=pipe(
+            data,
+            lambda x: x["weight"],
+            lambda x: pd.DataFrame(x),
+        ),
         cluster=pipe(
             data,
             lambda x: x["statefip"],
@@ -126,6 +132,7 @@ for y, w in product(grid.dependent, grid.exog):
                 exog=data.exog[w],
                 endog=data.endog,
                 instruments=data.instrument,
+                weights=data.weights,
             ).fit(cov_type="clustered", clusters=data.cluster),
         )
     except ValueError as e:
@@ -144,5 +151,10 @@ results.mutate(
 )
 
 with open(paths.join(paths.data, "results.pkl"), "wb") as f:
-    pkl.dump(results, f)
+    pipe(
+        results,
+        lambda x: x.__dict__,
+        lambda x: pd.DataFrame(x),
+        lambda x: pkl.dump(x, f),
+    )
 # %%
