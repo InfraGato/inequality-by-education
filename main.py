@@ -1,5 +1,5 @@
 # %%
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from itertools import product, chain, combinations
 from linearmodels import IV2SLS
 from linearmodels.iv.results import IVResults
@@ -32,9 +32,9 @@ class Grid:
 
 @dataclass
 class Results:
-    dependent: List[str]
-    exog: List[Tuple[str]]
-    iv: List[IVResults]
+    dependent: List[str] = field(default_factory=list)
+    exog: List[Tuple[str]] = field(default_factory=list)
+    iv: List[IVResults] = field(default_factory=list)
 
     def add_iv(self, dependent: str, exog: List[str], iv: IVResults):
         self.dependent.append(dependent)
@@ -120,7 +120,7 @@ grid = Grid(
     ),
 )
 # %%
-results = Results([], [], [])
+results = Results()
 
 for y, w in product(grid.dependent, grid.exog):
     try:
