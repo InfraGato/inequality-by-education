@@ -1,0 +1,65 @@
+
+%% ------------------------------------------------------------------------
+
+\begin{frame}
+    \frametitle{Methodology}
+    \framesubtitle{Main Model}
+
+    We define the random variable $Y$ as the change in a specific outcome for U.S. natives, $X$ as the Immigrant Inflow, and $Z$ as the instrument for $X$. The sample $\left\{Y_c, X_c, Z_c\right\}_{c = 1}^{722}$ consists of 722 CZs across the United States.
+    
+    Due to the potential endogeneity of $X$, the structural model is proposed as follows:
+
+    \begin{align}
+        Y_c = \alpha +  \beta X_c + \Vec{W_c}'\Vec{\gamma} + u_c \\
+        X_c = \phi + \xi Z_c + \Vec{W_c}'\Vec{\theta} + \nu_c\\
+    \end{align}
+    \begin{align}
+        \E{u_c | X_c} &\neq 0 \\
+        \cov{X_c, Z_c} &\neq 0 \\
+        \E{u_c | Z_c} &= \E{\nu_c | Z_c} = 0
+    \end{align}
+
+    Where $W$ is a vector of controls.
+    
+    This model is estimated using 2SLS, correcting inference for heteroskedasticity and autocorrelation with clustered robust standard errors, grouped by state.
+\end{frame}
+
+%% ------------------------------------------------------------------------
+
+\begin{frame}
+    \frametitle{Methodology}
+    \framesubtitle{Instrumental Relevance}
+    We are interested in evaluating the relationship between the instrument $Z$ and the endogenous variable $X$, specifically $\cov{X_c, Z_c} \neq 0$, given the control variables $W$. To do so, we use the auxiliary regression:
+
+    \begin{align}
+        r_{X,c} = \psi r_{Z,c} + \omega_{c}
+        \label{eq:auxiliary}
+    \end{align}
+    
+    where $r_{X,c}$ and $r_{Z,c}$ are the orthogonal components of $X$ and $Z$, respectively, defined as:
+    
+    \begin{align}
+        X_c = a_0 + \Vec{W_c}'\Vec{a_1} + r_{X,c} \\
+        Z_c = b_0 + \Vec{W_c}'\Vec{b_1} + r_{Z,c}
+    \end{align}
+    
+\end{frame}
+
+%% ------------------------------------------------------------------------
+
+\begin{frame}
+    \frametitle{Methodology}
+    \framesubtitle{Instrumental Relevance}
+    
+    The null hypothesis that the instrument is irrelevant ($\psi = 0$) is rejected if the $F_{partial}$ statistic exceeds 10\footnote{Staiger \& Stock (1997)}. Alternatively, this can be tested using a $\chi^2$ distribution with one degree of freedom\footnote{Montiel Olea \& Pflueger (2013)}, as we have a single endogenous variable and a single instrument.
+    
+    The $F_{partial}$ statistic is defined as:
+    
+    \begin{align}
+        F_{partial} = \frac{R^2}{\frac{1-R^2}{n - 1}}
+    \end{align}
+    
+    where $R^2$ is the coefficient of determination from the auxiliary regression \ref{eq:auxiliary}, and $n$ is the number of observations, which in this case is 722.
+
+
+\end{frame}
