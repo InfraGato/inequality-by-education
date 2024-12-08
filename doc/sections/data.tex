@@ -2,25 +2,52 @@
 \begin{frame}
     \frametitle{Data Description}
     \framesubtitle{Sources}
-
-    \lipsum[1]
-
+    The two main data sources used in this study are:
+    \begin{enumerate}
+        \item \textbf{Data I:} The 1990 and 2000 censuses from the IPUMS-USA (Integrated Public Use Microdata Series from United States).
+        \begin{itemize}
+            \item \url{https://usa.ipums.org/usa/}
+        \end{itemize}
+        \item \textbf{Data II:} The “ConsPUMA” (Consistent Public Use Microdata Areas), which is a geographic aggregation of PUMAs (Public Use Microdata Areas).
+        \end{itemize}
+    \end{enumerate}
 \end{frame}
 
 %% ------------------------------------------------------------------------ 
 \begin{frame}
     \frametitle{Data Description}
     \framesubtitle{Transformations}
-
-    \lipsum[1]
-
+    \begin{itemize}
+        \item \textbf{Step I:} Construct native labor-market outcomes by ConsPUMA “c”, year “y” (1990 and 2000), and education “e” (e = H for ≥ 12 years schooling vs. e = L for < 12 years)
+    \end{itemize}
+    \begin{itemize}
+        \item \textbf{Step II:} Construct working-age population with $(e = H)$ and without $(e = L)$ more than 12 years of schooling by $cy$, $N^e_{cy}$.
+    \end{itemize}
+    \begin{itemize}
+        \item \textbf{Step III:} Measure change in share with $\leq 12$ years of schooling
+        \item \[x_c = \frac{N^L_{c2000}}{N^L_{c2000} + N^H_{c2000}} - \frac{N^L_{c1990}}{N^L_{c1990} + N^H_{c1990}}\]
+    \end{itemize}
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%% ------------------------------------------------------------------------ 
 \begin{frame}
-    \frametitle{Data Description}
-    \framesubtitle{Dependent Variables}
 
-    \lipsum[1]
+    \frametitle{Methodology}
+    \framesubtitle{Transformations}
+    \begin{itemize}
+        \item \textbf{Step IV:} Construct instrument:
+    \end{itemize}
+    \begin{itemize}
+        \[z_c = \left( \frac{I^{\text{Mex}}_{c,1990}}{I^{\text{Mex}}_{1990}} \right) \left( I^{\text{Mex}}_{2000} - I^{\text{Mex}}_{1990} \right) = \frac{N^L_{c1990}}{N^L_{c1990} + N^H_{c1990}} \frac{I^{\text{Mex}}_{2000} - I^{\text{Mex}}_{1990}}{I^{\text{Mex}}_{1990}}\]
+    \end{itemize}
+    \begin{itemize}
+        \item $I^{\text{Mex}}_{c,y}$ = Mexican population of $c$ in year $y$
+        \item $I^{\text{Mex}}_y$ = total Mexican population of in $y$
+    \end{itemize}
+        \item \textbf{Step V:} 
+        \item Using 2SLS, project changes in conspuma relative outcomes for higher vs. lower education 
+        on $x_c$, instrumenting with $z_c$ (with controls defined in 1990).
+        \end{itemize}
+
 \end{frame}
+%% ------------------------------------------------------------------------
