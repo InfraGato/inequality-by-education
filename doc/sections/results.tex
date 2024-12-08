@@ -4,40 +4,38 @@
 
     \begin{table}[ht]
         \centering
-        \caption{First-Stage 2SLS Results Comparing Instruments (Standard Card Instrument vs. Predicted Immigrant Growth Rate)}
+        \caption{First-Stage 2SLS Results}
         \label{tab:fs}
-        \resizebox{\textwidth}{!}{
+        \resizebox{0.65\textwidth}{!}{
             \begin{tabular}{rcccccc}
                 \toprule
-                &\multicolumn{6}{c}{Endogenous Variable: Immigrant Inflow (1980-2008)} \\
-                \cmidrule(lr){2-7}
-                %& \multicolumn{3}{c}{(a) Standard Card Instrument} & \multicolumn{3}{c}{(b) Predicted Immigrant Growth Rate} \\
-                %\cmidrule(lr){2-4} \cmidrule(lr){5-7} 
-                                                                              & (1)             & (2)             & (3)             & (4)            & (5)             & (6)             \\
-                \cmidrule(lr){1-1} \cmidrule(lr){2-4} \cmidrule(lr){5-7}
-                \bf{Partial F Statistic}                                      & 8.9984          & 1.0693          & 0.1735          & 18.369         & 2.1906          & 9.9777          \\
-                \bf{P-value}                                                  & 0.0027          & 0.3011          & 0.6770          & 0.0000         & 0.1389          & 0.0016          \\
-                \cmidrule(lr){1-1} \cmidrule(lr){2-4} \cmidrule(lr){5-7} 
-                Constant                                                      & 0.0504***       & 0.0206***       & -0.3796***      & -0.0057        & -0.0027         & -0.4928***      \\
-                                                                              & \small(0.0099)  & \small(0.0069)  & \small(0.1408)  & \small(0.0201) & \small(0.0225)  & \small(0.1571)  \\
-                Share of employment among the foreign-born population in 1980 &                 & 2.3616***       & 1.2458**        &                & 1.6483***       & 1.1985***       \\
-                                                                              &                 & \small(0.5444)  & \small(0.6288)  &                & \small(0.3625)  & \small(0.3144)  \\
-                Share of employment in manufacturing in 1980                  &                 &                 & -0.2307*        &                &                 & -0.2105         \\
-                                                                              &                 &                 & \small(0.1301)  &                &                 & \small(0.1329)  \\
-                Share of employment among women in 1980                       &                 &                 & 0.6430          &                &                 & 0.7937*         \\
-                                                                              &                 &                 & \small(0.3986)  &                &                 & \small(0.3962)  \\
-                Share of the college-educated population in 1980              &                 &                 & 0.0599          &                &                 & 0.0939          \\
-                                                                              &                 &                 & \small(0.3496)  &                &                 & \small(0.3207)  \\
-                Logarithm of total population in 1980                         &                 &                 & 0.0181***       &                &                 & 0.0182***       \\
-                                                                              &                 &                 & \small(0.0058)  &                &                 & \small(0.0071)  \\
-                \bf{Standard Card Instrument}                                 & 0.3602***       & -0.1460         & 0.0555          &                &                 &                 \\
-                                                                              & \small(0.1201)  & \small(0.1412)  & \small(0.1333)  &                &                 &                 \\
-                \bf{Predicted Immigrant Growth Rate}                          &                 &                 &                 & 0.0391***      & 0.0129          & 0.0226***       \\
-                                                                              &                 &                 &                 & \small(0.0091) & \small(0.0087)  & \small(0.0071)  \\
-                \cmidrule(lr){1-1} \cmidrule(lr){2-4} \cmidrule(lr){5-7} 
+                \multicolumn{3}{c}{Endogenous Variable: Measure change in share with less than 12 years of schooling} \\
+                \cmidrule(lr){2-3}
+                                                                              & (1)             & (2)             \\
+                \cmidrule(lr){1-1} \cmidrule(lr){2-3}
+                \bf{Partial F Statistic}                                      & 22.376          & 44.856          \\
+                \bf{P-value}                                                  & 0.0000          & 0.0000          \\
+                \cmidrule(lr){1-1} \cmidrule(lr){2-3} 
+                Constant                                                      & -0.0362***      & -0.2737***      \\
+                                                                              & \small(0.0027)  & \small(0.0311)  \\
+                Share of the college-educated population in 1990              &                 & 0.0130          \\
+                                                                              &                 & \small(0.0229)  \\
+                Share of employment among the foreign-born population 1990    &                 & 0.0607***       \\
+                                                                              &                 & \small(0.0119)  \\
+                Share of employment among women in 1990                       &                 & 0.0353          \\
+                                                                              &                 & \small(0.0775)  \\
+                Share of population with high school education in 1990        &                 & 0.2617***       \\
+                                                                              &                 & \small(0.0170)  \\
+                Logarithm of total population in 1990                         &                 & 0.0000          \\
+                                                                              &                 & \small(0.0013)  \\
+                Share of employment in manufacturing in 1990                  &                 & -0.0431***      \\
+                                                                              &                 & \small(0.0139)  \\
+                Instrument                                                    & 0.2015***       & 0.2276***       \\
+                                                                              & \small(0.0426)  & \small(0.0340)  \\
+                \cmidrule(lr){1-1} \cmidrule(lr){2-3}
                 %\midrule
-                $R^2$                                                         & 0.2347          & 0.3296          & 0.3977          & 0.1131         & 0.3331          & 0.4242          \\
-                Partial $R^2$                                                 & 0.2347          & 0.0097          & 0.0012          & 0.1131         & 0.0148          & 0.0452          \\
+                $R^2$                                                         & 0.1834          & 0.7092          \\
+                Partial $R^2$                                                 & 0.1834          & 0.2424          \\
                 \bottomrule
             \end{tabular}
         }
@@ -45,12 +43,13 @@
         
         \begin{minipage}{\linewidth}
             \tiny
-            \textit{Notes:} $N = 741$. Robust standard errors (in parentheses) are clustered at the state level. A Partial F-statistic below 10 is typically considered weak evidence of instrument relevance. The p-value is calculated using a $\chi^2(1)$ distribution. \\
+            \textit{Notes:} $N = 741$. Robust standard errors (in parentheses) are clustered at the state level. A Partial F-statistic below 10 is typically considered weak evidence of instrument relevance. The p-value is calculated using a $\chi^2(1)$ distribution. Weighted regression based on the population size in each "CONSPUMA."\\
             *** Significant at the 1 percent level. \\
             ** Significant at the 5 percent level. \\
             * Significant at the 10 percent level.
         \end{minipage}
     \end{table}
+
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -58,8 +57,9 @@
     \frametitle{Main Results}
     \framesubtitle{Instrumental Relevance}
 
-    \lipsum[1]
+    \begin{block}
 
+        The results in Table \ref{tab:fs} present the partial $F$-statistic corresponding to the first stage of the 2SLS regression. According to the commonly accepted rule by Staiger and Stock (1997), and considering that the value of the partial $F$-statistic exceeds 10 in both exercises, it is concluded that the instrument is relevant for the measurement of the change in the proportion of individuals with less than 12 years of schooling.    \end{block}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
